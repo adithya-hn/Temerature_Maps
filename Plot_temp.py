@@ -90,11 +90,10 @@ y14=data[14] #ARa
 x15=data[11]
 y15=data[15] #BGa
 
-
 x16=data1[3]
 y16=data1[4] #ssn
 
-FDarea=y15+y14+y13+y12
+
 x17=data[11]#FDT
 y17=data[16]
 
@@ -122,7 +121,7 @@ al=len(y7)
 bl=len(y8)
 
 
-avgFDT=y17.sum()/(len(y17))
+avgFDT=y17.sum()/bl
 AgCp=y5.sum()/cl
 AgLp=y6.sum()/xl
 AgAp=y7.sum()/al
@@ -184,9 +183,9 @@ for plot in range(25):
   #plt.savefig('plots/Al_mesh-totInXBPs.eps')
   plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
   plt.savefig('plots/AvgTp_XBP.png')
-  plt.show()#block=False)
-  #plt.pause(2)
-  #plt.close()
+  plt.show(block=False)
+  plt.pause(2)
+  plt.close()
 
 ##3
  if plot==3:
@@ -337,7 +336,7 @@ for plot in range(25):
  '''
 ##15
  if plot==15:
-  #y18=np.multiply(y18,np.where(y23==2048, 0.25,1))
+  y18=np.multiply(y18,np.where(y23==2048, 0.25,1))
   #fig= plt.figure(figsize=(9,5),dpi=300)
   plt.rcParams["xtick.major.size"] = 15
   fig= plt.figure(dpi=300)   
@@ -350,10 +349,10 @@ for plot in range(25):
   ax.xaxis.set_ticks_position('both')
   ax.minorticks_on()
   plt.text(0.9999*(max(x8)),0.8*(min(y8)+max(y8)),'(c)' )
-  plt.title('Variation of Mean of FDI ratio',fontsize=12)
-  plt.ylabel('Mean of FDI ratio',fontsize=11)
+  plt.title('Variation of FDI ratio',fontsize=12)
+  plt.ylabel('FDI ratio',fontsize=11)
   plt.xlabel('Date of observation',fontsize=11)
-  plt.plot(x18,(y18/FDarea), 'k',linewidth=1)
+  plt.plot(x18,y18, 'k',linewidth=1)
   plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
   plt.savefig('plots/FDintRat.eps')
   plt.show(block=False)
@@ -588,7 +587,7 @@ for plot in range(25):
 
  if plot==20: #CH
    #fig= plt.figure(figsize=(9,5),dpi=300)
-  #y19 = np.multiply(y19, np.where(y23 == 2048, 0.25, 1))
+  y19 = np.multiply(y19, np.where(y23 == 2048, 0.25, 1))
   plt.rcParams["xtick.major.size"] = 15
   fig= plt.figure(dpi=300)
   ax = fig.subplots()
@@ -600,11 +599,11 @@ for plot in range(25):
   ax.xaxis.set_ticks_position('both')
   ax.minorticks_on()
   #plt.text(0.9999*(max(x16)),0.94*(min(y16)+max(y16)),'(g)')
-  plt.title('Variation of CH Mean Intensity Ratio ',fontsize=12)
-  plt.ylabel('CHs Mean Intensity Ratio',fontsize=11)
+  plt.title('Variation of CH Intensity Ratio ',fontsize=12)
+  plt.ylabel('CHs Intensity Ratio',fontsize=11)
   plt.xlabel('Date of observation',fontsize=11)
   plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-  plt.plot(x19,(y19/y12), 'k',linewidth=1)
+  plt.plot(x19,y19, 'k',linewidth=1)
   plt.savefig('plots/CHintRat.eps')
   plt.show(block=False)
   plt.pause(2)
@@ -612,7 +611,7 @@ for plot in range(25):
 
  if plot==21: #BP
    #fig= plt.figure(figsize=(9,5),dpi=300)
-  #y20 = np.multiply(y20, np.where(y23 == 2048, 0.25, 1))
+  y20 = np.multiply(y20, np.where(y23 == 2048, 0.25, 1))
   plt.rcParams["xtick.major.size"] = 15
   fig= plt.figure(dpi=300)
   ax = fig.subplots()
@@ -624,43 +623,19 @@ for plot in range(25):
   ax.xaxis.set_ticks_position('both')
   ax.minorticks_on()
   #plt.text(0.9999*(max(x16)),0.94*(min(y16)+max(y16)),'(g)')
-  plt.title('Variation of XBP Mean Intensity Ratio ',fontsize=12)
-  plt.ylabel('XBPs Mean Intensity Ratio',fontsize=11)
+  plt.title('Variation of XBP Intensity Ratio ',fontsize=12)
+  plt.ylabel('XBPs Intensity Ratio',fontsize=11)
   plt.xlabel('Date of observation',fontsize=11)
   plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-  plt.plot(x20,(y20/y13), 'k',linewidth=1)
+  plt.plot(x20,y20, 'k',linewidth=1)
   plt.savefig('plots/XBPintRat.eps')
-  plt.show(block=False)
-  plt.pause(2)
-  plt.close()
-
- if plot==21: #AR
-   #fig= plt.figure(figsize=(9,5),dpi=300)
-  #y21 = np.multiply(y21, np.where(y23 == 2048, 0.25, 1))
-  plt.rcParams["xtick.major.size"] = 15
-  fig= plt.figure(dpi=300)
-  ax = fig.subplots()
-  ax.xaxis.set_tick_params(size=0.5)
-  ax.yaxis.set_tick_params(size=0.5)
-  ax.tick_params(axis='both',direction='in', length=6, width=1)
-  ax.tick_params(which='minor',direction='in', length=3, width=1)
-  ax.yaxis.set_ticks_position('both')
-  ax.xaxis.set_ticks_position('both')
-  ax.minorticks_on()
-  #plt.text(0.9999*(max(x16)),0.94*(min(y16)+max(y16)),'(g)')
-  plt.title('Variation of AR Mean Intensity Ratio ',fontsize=12)
-  plt.ylabel('AR Mean Intensity Ratio',fontsize=11)
-  plt.xlabel('Date of observation',fontsize=11)
-  plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-  plt.plot(x21,(y21/y14), 'k',linewidth=1)
-  plt.savefig('plots/ARintRat.eps')
   plt.show()#block=False)
   #plt.pause(2)
   #plt.close()
 
- if plot==22: #BG
+ if plot==21: #AR
    #fig= plt.figure(figsize=(9,5),dpi=300)
-  #y22 = np.multiply(y22, np.where(y23 == 2048, 0.25, 1))
+  y21 = np.multiply(y21, np.where(y23 == 2048, 0.25, 1))
   plt.rcParams["xtick.major.size"] = 15
   fig= plt.figure(dpi=300)
   ax = fig.subplots()
@@ -672,11 +647,35 @@ for plot in range(25):
   ax.xaxis.set_ticks_position('both')
   ax.minorticks_on()
   #plt.text(0.9999*(max(x16)),0.94*(min(y16)+max(y16)),'(g)')
-  plt.title('Variation of BG Mean Intensity Ratio ',fontsize=12)
-  plt.ylabel('BG Mean Intensity Ratio',fontsize=11)
+  plt.title('Variation of AR Intensity Ratio ',fontsize=12)
+  plt.ylabel('AR Intensity Ratio',fontsize=11)
   plt.xlabel('Date of observation',fontsize=11)
   plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-  plt.plot(x22,(y22/y15), 'k',linewidth=1)
+  plt.plot(x21,y21, 'k',linewidth=1)
+  plt.savefig('plots/ARintRat.eps')
+  plt.show(block=False)
+  plt.pause(2)
+  plt.close()
+
+ if plot==22: #BG
+   #fig= plt.figure(figsize=(9,5),dpi=300)
+  y22 = np.multiply(y22, np.where(y23 == 2048, 0.25, 1))
+  plt.rcParams["xtick.major.size"] = 15
+  fig= plt.figure(dpi=300)
+  ax = fig.subplots()
+  ax.xaxis.set_tick_params(size=0.5)
+  ax.yaxis.set_tick_params(size=0.5)
+  ax.tick_params(axis='both',direction='in', length=6, width=1)
+  ax.tick_params(which='minor',direction='in', length=3, width=1)
+  ax.yaxis.set_ticks_position('both')
+  ax.xaxis.set_ticks_position('both')
+  ax.minorticks_on()
+  #plt.text(0.9999*(max(x16)),0.94*(min(y16)+max(y16)),'(g)')
+  plt.title('Variation of BG Intensity Ratio ',fontsize=12)
+  plt.ylabel('BG Intensity Ratio',fontsize=11)
+  plt.xlabel('Date of observation',fontsize=11)
+  plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+  plt.plot(x22,y22, 'k',linewidth=1)
   plt.savefig('plots/BGintRat.eps')
   plt.show(block=False)
   plt.pause(2)
